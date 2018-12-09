@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - GradExam</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+
+    <!-- Font Awesome JS -->
+    @*<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>*@
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="topbar-left">
+            <div class="text-center">
+                <a class="navbar-brand logo" href="/Home/Index">GradExam</a>
+            </div>
+        </div>
+            
+        <div id="navbar" class="collapse navbar-collapse">
+            <partial name="_LoginPartial" />
+        </div><!--/.nav-collapse -->
+    </nav>
+
+    <div class="wrapper">
+        <nav id="sidebar">
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="/Home/Index">
+                        <span style="padding: 0 15px;"><i class="fa fa-home fa-fw" aria-hidden="true"></i></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/About">
+                        <span style="padding: 0 15px;"><i class="fa fa-info fa-fw" aria-hidden="true"></i></span>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/Contact">
+                        <span style="padding: 0 15px;"><i class="fa fa-address-card fa-fw" aria-hidden="true"></i></span>
+                        <span>
+                            Contact
+                        </span>
+                    </a>
+                </li>
+
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <li>
+                        <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <span style="padding: 0 15px;"><i class="fa fa-wrench fa-fw" aria-hidden="true"></i></span>
+                            <span>Administration</span>
+                        </a>
+                        <ul class="collapse list-unstyled sub-menu" id="adminSubmenu">
+                            <li>
+                                <a href="/User">
+                                    <i class="fa fa-users fa-fw" aria-hidden="true"></i>
+                                    <span>Users</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Student">
+                                    <i class="fas fa-user-graduate fa-fw" style="display: inline-block;" aria-hidden="true"></i>
+                                    <span>Students</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Concentration">
+                                    <i class="fa fa-bullseye fa-fw" aria-hidden="true"></i>
+                                    <span>Concentrations</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Course">
+                                    <i class="fa fa-book fa-fw" aria-hidden="true"></i>
+                                    <span>Courses</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/QuesAnswer">
+                                    <i class="fa fa-question fa-fw" style="display: inline-block;" aria-hidden="true"></i>
+                                    <span>Q&A</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/LearnOutcome">
+                                    <i class="fab fa-leanpub fa-fw" style="display: inline-block;" aria-hidden="true"></i>
+                                    <span>Learning Outcomes</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Exam/SelectExam">
+                                    <i class="fas fa-file-alt fa-fw" style="display: inline-block;" aria-hidden="true"></i>
+                                    <span>Give Exam</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Report">
+                                    <i class="fas fa-file-alt fa-fw" style="display: inline-block;" aria-hidden="true"></i>
+                                    <span>Learning Outcome Reports</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+
+                @if (User.IsInRole("Instructor"))
+                {
+                    <li>
+                        <a href="#instructionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                            <span style="padding: 0 15px;"><i class="fa fa-university fa-fw" aria-hidden="true"></i></span>
+                            <span>Instruction</span>
+                        </a>
+                        <ul class="collapse list-unstyled sub-menu" id="instructionSubmenu">
+                            <li>
+                                <a href="/Course">
+                                    <i class="fa fa-book fa-fw" aria-hidden="true"></i>
+                                    <span>Courses</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/QuesAnswer">
+                                    <i class="fa fa-question fa-fw" style="display: inline-block;" aria-hidden="true"></i>
+                                    <span>Q&A</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </nav>
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+
+                    <div class="container body-content">
+                        <div style="height: 30px;"></div>
+                        @RenderBody()
+
+                    </div>
+                    <div class="container">
+                        <hr />
+                        <footer>
+                            <p>&copy; 2018 - GradExam</p>
+                        </footer>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!--  JavaScript Stuff  -->
+    <script>
+        // Makes the sidebar collapsable
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+
+        // Active class on the correct nav item
+        $(document).ready(function () {
+            var url = window.location;
+            $('#sidebar ul').find('.active').removeClass('active');
+            $('#sidebar li a').each(function () {
+                if (this.href == url) {
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+
+    </script>
+
+
+
+
+    @*<!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.js">
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.js">
+    </script>*@
+    <environment include="Development">
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

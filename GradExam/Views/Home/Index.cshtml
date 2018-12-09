@@ -1,0 +1,46 @@
+﻿<!-- View for the main index page -->
+@model GradExam.ViewModels.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col-lg-12" style="text-align: center;">
+    <h2>GradExam</h2>
+    <hr />
+</div>
+@if (User.IsInRole("Admin"))
+{
+    <div class="col-lg-12" style="text-align: center;">
+        <div class="col-lg-4">
+            <h4>Maintain Students</h4>
+            <a href="/Student"><button class="btn btn-default">Students</button></a>
+        </div>
+        <div class="col-lg-4">
+            <h4>Maintain Courses</h4>
+            <a href="/Courses"><button class="btn btn-default">Courses</button></a>
+        </div>
+        <div class="col-lg-4">
+            <h4>Maintain Concentration</h4>
+            <a href="/Concentration"><button class="btn btn-default">Concentration</button></a>
+        </div>
+        <div class="col-lg-4">
+            <h4>Maintain Outcomes</h4>
+            <a href="/LearnOutcome"><button class="btn btn-default">Outcomes</button></a>
+        </div>
+        <div class="col-lg-4">
+            <h4>Maintain Questions and Answers</h4>
+            <a href="/QuesAnswer"><button class="btn btn-default">Q & A</button></a>
+        </div>
+        <div class="col-lg-4">
+            <h4>Maintain Exams</h4>
+            <a href="/Exam"><button class="btn btn-default">Exams</button></a>
+        </div>
+    </div>
+}
+else
+{
+    <p>Please Log In</p>
+    <button class="btn">Log In</button>
+}
+
+

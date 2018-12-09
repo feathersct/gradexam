@@ -1,0 +1,19 @@
+﻿<!-- View for selecting an Exam -->
+@{
+    ViewData["Title"] = "SelectExam";
+}
+
+<h2>Select A Student to Administer an Exam</h2>
+
+@using (Html.BeginForm("SelectExam", "Exam"))
+{
+    <div class="form-group">
+        <div class="col-xs-8">
+            @Html.DropDownList("studentId", new SelectList(ViewBag.Students, "Id", "Name"), "--- Students ---", new { @class = "form-control" })
+        </div>
+        <div class="col-xs-4">
+            <input type="submit" value="Select" class="btn btn-default" />
+        </div>
+    </div>
+}
+

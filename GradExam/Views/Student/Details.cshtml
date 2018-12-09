@@ -1,0 +1,23 @@
+﻿@model GradExam.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <h4>Courses Enrolled</h4>
+    <ul>
+        @foreach(var course in Model.StudentCourses)
+        {
+            <li>@course.Course.Name  - @course.Course.Semester</li>
+        }
+    </ul>
+
+</div>
+
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
