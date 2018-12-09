@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+
+<ul class="nav navbar-nav navbar-right nav-custom">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li>
+            <a href="/User/Edit/@UserManager.GetUserId(User)">Hello @UserManager.GetUserName(User)!</a>
+        </li>
+        <li>
+            <a asp-controller="Auth" asp-action="LogOut">Logout</a>
+        </li>
+        <li>
+            <a asp-controller="Auth" asp-action="ResetPassword">Reset Password</a>
+        </li>
+    }
+    else
+    {
+        <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+        <li><a asp-controller="Auth" asp-action="LogIn">Login</a></li>
+    }
+</ul>

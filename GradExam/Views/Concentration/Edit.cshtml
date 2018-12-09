@@ -1,0 +1,32 @@
+﻿<!-- View for editing in a concentration -->
+@model GradExam.ViewModels.EditConcentrationViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Concentration"))
+{
+    <div class="col-sm-4">
+
+        @Html.ValidationSummary()
+        <div class="form-group">
+            <!--  Needs to be read only  -->
+            @Html.LabelFor(model => model.Id)
+            @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly"} })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title)
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+    
+    </div>
+}
+
+<script>
+    document.getElementById("Title").readOnly = @(Model.ReadOnly ? "true" : "false");
+    $("#submit").css("visibility", "@(Model.ReadOnly ? "hidden" : "")");
+
+</script>

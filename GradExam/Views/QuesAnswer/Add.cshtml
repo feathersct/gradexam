@@ -1,0 +1,30 @@
+﻿@model GradExam.ViewModels.AddQuesAnswerViewModel
+
+
+<h2>Add</h2>
+
+<h4>QuesAnswer</h4>
+<hr />
+
+@using (Html.BeginForm("Add","QuesAnswer"))
+{
+<div class="col-sm-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Question, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.TextAreaFor(model => model.Question, 4, 70, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Answer, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.TextAreaFor(model => model.Answer, 4, 70, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Course, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DropDownListFor(model => model.CourseId,new SelectList(Model.Courses, "Id", "Name"), "--- Courses ---", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LearnOutcome, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.DropDownListFor(model => model.LearnOutcomeId, new SelectList(Model.LearnOutcomes, "Id", "LearningOutcome"), "--- Learning Outcomes ---", new { @class = "form-control" })
+    </div>
+    <button type="submit" class="btn btn-primary">Create New Q/A</button>
+</div>
+}

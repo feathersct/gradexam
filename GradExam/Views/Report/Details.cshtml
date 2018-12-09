@@ -1,0 +1,152 @@
+﻿@model GradExam.Models.Course
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Name) - @Html.DisplayFor(model => model.Semester)</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Section)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Section)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Instructor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.FullName)
+        </dd>
+        <dt>@Html.DisplayNameFor(model => model.Concentration)</dt>
+        <dd>@Html.DisplayFor(model => model.Concentration)</dd>
+    </dl>
+    <div class="row">
+        <div class="col-lg-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.StudentCourses)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => item.Student.Name)
+                            </td>
+                            <td><a style="color:blue;" href="/Course/RemoveStudent/?studentId=@item.StudentId&courseId=@item.CourseId">Remove</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @using (Html.BeginForm("AddStudent", "Course"))
+            {
+                @Html.Hidden("courseId", Model.Id)
+                <div class="form-group">
+                    <div class="col-xs-8">
+                        @Html.DropDownList("studentId", new SelectList(ViewBag.Students, "Id", "Name"), "--- Students ---", new { @class = "form-control" })
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="submit" value="Add Student" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- For the learning outcomes -->
+        <div class="col-lg-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Learning Outcome</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*------ Put Learning outcomes here -------*@
+                    @foreach (var item in Model.LearnOutcomes)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => item.LearningOutcome)
+                            </td>
+                            <td><a style="color:blue;" href="/Course/RemoveStudent/?learningOutcomeId=@item.Id&courseId=@Model.Id">Remove</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            @using (Html.BeginForm("AddLearningOutcome", "Course"))
+            {
+                @Html.Hidden("courseId", Model.Id)
+                <div class="form-group">
+                    <div class="col-xs-8">
+                        @Html.DropDownList("learningOutcomeId", new SelectList(ViewBag.LearningOutcomes, "Id", "LearningOutcome"), "--- Learning Outcomes ---", new { @class = "form-control" })
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="submit" value="Add Outcome" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+
+        <!-- For the Q & A -->
+        <div class="col-lg-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Answer</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model.QuesAnswers)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.Question)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Answer)
+                        </td>
+                        <td><a style="color:blue;" href="/Course/RemoveQuestionAnswer/?questionAnswerId=@item.Id&courseId=@Model.Id">Remove</a></td>
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+            @using (Html.BeginForm("AddQuestionAnswer", "Course"))
+            {
+                @Html.Hidden("courseId", Model.Id)
+                <div class="form-group"> 
+                    <div class="col-xs-8">
+                        @Html.DropDownList("questionAnswerId", new SelectList(ViewBag.QuesAnswers, "Id", "Question", "Answer"), "--- Question Answer ---", new { @class = "form-control" })
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="submit" value="Add Q/A" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+
+
+<div class="form-group">
+    <br/>
+    <a asp-action="Index">Back to List</a>
+</div>
