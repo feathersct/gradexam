@@ -1,18 +1,4 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-// 
-// Solution/Project: GradExam/GradExam
-// File Name: HomeController.cs 
-// Description: Functions as the main controller for the concentration page of the program. Displays and handles 
-//              controlling for an index page, editing, adding or deleting concentration via regular functions or page
-//              redirections. 
-// 
-// Course: CSCI 3250-001 - Software Engineering I  
-// Author: Levi Shelton, SHELTONL@etsu.edu 
-// Created: December, October 05, 2018 
-// Copyright: Scrum Bags, 2018
-// 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

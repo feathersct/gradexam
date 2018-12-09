@@ -1,17 +1,4 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-// 
-// Solution/Project: GradExam/GradExam
-// File Name: HomeController.cs 
-// Description: Functions as the main controller for the home page of the program. Works Index/About/Contact/Privacy
-//              controls. Handles role directories etc.
-// 
-// Course: CSCI 3250-001 - Software Engineering I  
-// Author: Levi Shelton, SHELTONL@etsu.edu 
-// Created: December, October 05, 2018 
-// Copyright: Scrum Bags, 2018
-// 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;

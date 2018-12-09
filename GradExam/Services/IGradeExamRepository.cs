@@ -1,16 +1,4 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-// 
-// Solution/Project: GradExam/GradExam
-// File Name: DbGradExam.cs 
-// Description: Functions as a repository for all method signatures in DbGradExam relating to all of the controller calls
-// 
-// Course: CSCI 3250-001 - Software Engineering I
-// Author: Levi Shelton, SHELTONL@etsu.edu 
-// Created: December, October 05, 2018 
-// Copyright: Scrum Bags, 2018
-// 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-using GradExam.Models;
+﻿using GradExam.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

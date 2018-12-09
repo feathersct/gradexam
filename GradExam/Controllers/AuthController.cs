@@ -1,18 +1,4 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-// 
-// Solution/Project: GradExam/GradExam
-// File Name: AuthController.cs 
-// Description: Functions as the main controller for the auth page of the program. Handles various actions of the page
-//              such as displaying an index page, logging in and out a user, register actions, reseting a password, etc
-//              via various page redirections and or functions. 
-// 
-// Course: CSCI 3250-001 - Software Engineering I  
-// Author: Levi Shelton, SHELTONL@etsu.edu 
-// Created: December, October 05, 2018 
-// Copyright: Scrum Bags, 2018
-// 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

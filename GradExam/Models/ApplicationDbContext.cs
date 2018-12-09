@@ -1,17 +1,4 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-// 
-// Solution/Project: GradExam/GradExam
-// File Name: ApplicationDbContext.cs 
-// Description: Functions as the main model for the applications database context. Handles relationship contexts between
-//              tables.
-// 
-// Course: CSCI 3250-001 - Software Engineering I  
-// Author: Levi Shelton, SHELTONL@etsu.edu 
-// Created: December, October 05, 2018 
-// Copyright: Scrum Bags, 2018
-// 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

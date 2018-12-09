@@ -1,17 +1,4 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
-// 
-// Solution/Project: GradExam/GradExam
-// File Name: DbGradExam.cs 
-// Description: Functions as a stage for the database. Handles various calls for reading from or saving to a database 
-//				for each of the various controller calls. Reading from a database also includes reading various associated
-//				keys for each table in the database. Reads or saves to tables created by migrations.
-// 
-// Course: CSCI 3250-001 - Software Engineering I
-// Created: December, October 05, 2018 
-// Copyright: Scrum Bags, 2018
-// 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
